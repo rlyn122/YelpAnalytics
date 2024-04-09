@@ -1,33 +1,37 @@
 import pandas as pd
 
-print('reading dataset...')
-df = pd.read_json('data/yelp_academic_dataset_business.json',lines=True)
-print(df.head(10))
+def filter_businesses(df, min = 10):
+    """
+    Takes the businesses data frame and filters for minimum review count and for restaraunts
+    """
+
+    popular_businesses = df[df['review_count']>min]
+    popular_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('Restaurants|Food',na=False)]
+    print("Number of restaraunts: "+ str(len(popular_restaraunts)))
+
+    #select only certain attributes
+    popular_restaraunts = popular_restaraunts[['business_id','categories','stars','name','state']]
+    print(popular_restaraunts.head(5))
+    return popular_restaraunts
 
 
-min = 25
+print("Reading...\n")
 
-popular_businesses = df[df['review_count']>min]
-print(f"number of {min} plus businesses: ", len(popular_businesses))
+df_business = pd.read_json('data/yelp_academic_dataset_business.json',lines=True)
+df_reviews = pd.read_json('data/yelp_academic_dataset_review.json',lines=True)
 
-popular_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('Restaurants',na=False)]
-print(f"number of restaraunts with {min} reviews: ", len(popular_restaraunts))
+print("Done reading...\n")
 
-restaraunts_by_state = popular_restaraunts.groupby("state").size()
+print("Now filtering: \n")
+df_business = filter_businesses(df_business)
 
-chinese_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('Chinese',na=False)]
-print("Chinese restaraunts ", len(chinese_restaraunts))
+print("Merging...\n")
+merged_data = df_business.merge(df_reviews,on='business_id',how='inner')
+filtered_data = merged_data[['text']]
 
-American_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('American',na=False)]
-print("American restaraunts ", len(American_restaraunts))
 
-Japanese_r = popular_businesses[popular_businesses['categories'].str.contains('Japanese',na=False)]
-print("Japanese restaraunts ", len(Japanese_r))
+merged_data.to_csv("./data/output/merge.csv")
 
-mexican_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('Mexican',na=False)]
-print("mexican restaraunts ", len(mexican_restaraunts))
 
-print("restraunts by state: \n")
-print(restaraunts_by_state)
-
-#comment
+# df_business.to_csv("./data/output/businesses.csv",sep=',',index=False,encoding='utf-8')
+# df_reviews.to_csv("./data/output/reviews.csv",sep=',',index=False,encoding='utf-8')
