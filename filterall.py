@@ -1,4 +1,5 @@
 import pandas as pd
+import csv
 
 def filter_businesses(df, min = 10):
     """
@@ -6,12 +7,12 @@ def filter_businesses(df, min = 10):
     """
 
     popular_businesses = df[df['review_count']>min]
-    popular_restaraunts = popular_businesses[popular_businesses['categories'].str.contains('Restaurants|Food',na=False)]
-    print("Number of restaraunts: "+ str(len(popular_restaraunts)))
+    conditions = popular_businesses['categories'].str.contains('Restaraunts|Food',na=False)
+    popular_restaraunts = popular_businesses[conditions]
+    print(f"Number of restaraunts for all: {str(len(popular_restaraunts))}")
 
     #select only certain attributes
     popular_restaraunts = popular_restaraunts[['business_id','categories','stars','name','state']]
-    print(popular_restaraunts.head(5))
     return popular_restaraunts
 
 
@@ -19,19 +20,17 @@ print("Reading...\n")
 
 df_business = pd.read_json('data/yelp_academic_dataset_business.json',lines=True)
 df_reviews = pd.read_json('data/yelp_academic_dataset_review.json',lines=True)
+df_reviews['text'] = df_reviews['text'].apply(lambda x: x.replace('\n', ' ').replace('\r', ' '))
 
 print("Done reading...\n")
 
-print("Now filtering: \n")
-df_business = filter_businesses(df_business)
+
+df_filtered = filter_businesses(df_business)
 
 print("Merging...\n")
-merged_data = df_business.merge(df_reviews,on='business_id',how='inner')
-filtered_data = merged_data[['text']]
-
-
-merged_data.to_csv("./data/output/merge.csv")
+merged_data = df_filtered.merge(df_reviews,on='business_id',how='inner')
+merged_data.to_csv(f"./data/output/merge.csv", quoting=csv.QUOTE_NONNUMERIC)
 
 
 # df_business.to_csv("./data/output/businesses.csv",sep=',',index=False,encoding='utf-8')
-# df_reviews.to_csv("./data/output/reviews.csv",sep=',',index=False,encoding='utf-8')
+# df_reviews.to_csv("./data/output/reviews.csv",sep=',',index=False,encoding='utf-8') 

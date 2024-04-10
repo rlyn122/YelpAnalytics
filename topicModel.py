@@ -4,56 +4,83 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from gensim.corpora import Dictionary
 from gensim.models import LdaModel
+import csv
+import os
 
-# Download necessary NLTK resources
-nltk.download('stopwords')
-nltk.download('punkt')
+# Only download necessary NLTK resources if they're not already downloaded
+nltk_resources = ['stopwords', 'punkt']
+for resource in nltk_resources:
+    try:
+        nltk.data.find(f'tokenizers/{resource}')
+    except LookupError:
+        nltk.download(resource)
 
-# Load the merged CSV file
-df = pd.read_csv("./data/output/merge.csv")
-
-# Assume 'text' is the column with review texts and 'stars' is the ratings
-documents = df['text'].tolist()
-ratings = df['stars'].tolist()  # This could be used for different analyses
-
-# Text preprocessing
+# Initialize stopwords once, outside the loop
 stop_words = set(stopwords.words('english'))
 
 def preprocess(text):
     tokens = word_tokenize(text.lower())  # Tokenize and convert to lower case
     filtered_tokens = [w for w in tokens if w not in stop_words and w.isalpha()]  # Remove stopwords and non-alphabetic tokens
+    # if not filtered_tokens:
+        # print("Empty after filtering:", text)  # Debug statement to check what's getting filtered out
     return filtered_tokens
 
-processed_docs = [preprocess(doc) for doc in documents]
 
-# Create a dictionary representation of the documents
-dictionary = Dictionary(processed_docs)
-dictionary.filter_extremes(no_below=2, no_above=0.5)  # Adjust thresholds according to your dataset
 
-# Create a bag-of-words model for each document
-corpus = [dictionary.doc2bow(doc) for doc in processed_docs]
+cuisines = ["American", "Chinese", "Mexican", "Japanese",""]
+results_dir = "./results/"
+os.makedirs(results_dir, exist_ok=True)  # Ensure the results directory exists
 
-# Set training parameters for LDA
-num_topics = 5
-chunksize = 2000
-passes = 20
-iterations = 400
-eval_every = None  # optimization to skip model evaluation
+for cuisine in cuisines:
+    print(f"Processing {cuisine}")
+    try:
+        # Load the merged CSV file
+        df = pd.read_csv(f"./data/output/merge{cuisine}.csv", usecols=['text'], dtype={'text': 'string'})
+        print(df['text'].apply(lambda x: isinstance(x, str)).all())  # Ensure all entries are strings
 
-# Train the LDA model
-model = LdaModel(
-    corpus=corpus,
-    id2word=dictionary.id2token,
-    chunksize=chunksize,
-    alpha='auto',
-    eta='auto',
-    iterations=iterations,
-    num_topics=num_topics,
-    passes=passes,
-    eval_every=eval_every
-)
+        reviews = df['text'].tolist()
+        print(f"Loaded {len(reviews)} reviews for {cuisine}")
 
-# Print the topics found by the LDA model
-topics = model.print_topics(num_words=10)
-for topic_id, topic in topics:
-    print(f"Topic {topic_id}: {topic}")
+        processed_reviews = [preprocess(review) for review in reviews]
+
+        # Create a dictionary and corpus
+
+        # After preprocessing
+        non_empty_reviews = [doc for doc in processed_reviews if doc]  # Filter out empty documents 
+        
+        dictionary = Dictionary(non_empty_reviews)
+        dictionary.filter_extremes(no_below=2, no_above=0.5)
+        corpus = [dictionary.doc2bow(doc) for doc in non_empty_reviews]    
+
+        temp = dictionary[0]
+        id2word = dictionary.id2token
+
+        print("setting training parameters... ")
+        # Set training parameters for LDA
+        model = LdaModel(
+            corpus=corpus,
+            id2word=dictionary.id2token,
+            chunksize=2000,
+            alpha='auto',
+            eta='auto',
+            iterations=400,
+            num_topics=10,
+            passes=20,
+            eval_every=None  # Skip model evaluation to save time
+        )
+
+        # Print the topics found by the LDA model
+        print("Creating topics...")
+        topics = model.print_topics(num_words=10)
+        filename = os.path.join(results_dir, f"{cuisine}Topics.csv")
+
+        with open(filename, 'w', newline='', encoding='utf-8') as file:
+            writer = csv.writer(file)
+            writer.writerow([f"Number of Reviews Sampled {len(non_empty_reviews)}"])
+            writer.writerow(["Topic ID", "Words and Weights"])
+            for topic_id, topic in topics:
+                writer.writerow([f"Topic {topic_id}", topic])
+                
+        print(f"Topics written to {filename}")
+    except Exception as e:
+        print(f"Error processing {cuisine}: {e}")
