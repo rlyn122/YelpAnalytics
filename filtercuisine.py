@@ -37,4 +37,4 @@ for cuisine in cuisines:
 
 
 # df_business.to_csv("./data/output/businesses.csv",sep=',',index=False,encoding='utf-8')
-# df_reviews.to_csv("./data/output/reviews.csv",sep=',',index=False,encoding='utf-8') 
+# df_reviews.to_csv("./data/output/reviews.csv",sep=',',index=False,encoding='utf-8') _

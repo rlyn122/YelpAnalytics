@@ -1,6 +1,12 @@
+Number of Reviews Sampled 38887
 Topic ID,Words and Weights
-Topic 0,"0.066*""roll"" + 0.039*""rolls"" + 0.035*""sushi"" + 0.026*""rice"" + 0.023*""shrimp"" + 0.018*""tuna"" + 0.018*""spicy"" + 0.017*""salad"" + 0.017*""soup"" + 0.017*""salmon"""
-Topic 1,"0.032*""sushi"" + 0.030*""place"" + 0.027*""food"" + 0.024*""good"" + 0.023*""great"" + 0.016*""service"" + 0.010*""best"" + 0.010*""go"" + 0.010*""love"" + 0.010*""delicious"""
-Topic 2,"0.068*""bowl"" + 0.058*""poke"" + 0.029*""rice"" + 0.023*""bowls"" + 0.021*""sauce"" + 0.017*""fish"" + 0.014*""tuna"" + 0.014*""fresh"" + 0.014*""toppings"" + 0.014*""salmon"""
-Topic 3,"0.054*""ramen"" + 0.034*""chicken"" + 0.017*""noodles"" + 0.017*""pork"" + 0.017*""spicy"" + 0.015*""good"" + 0.015*""tea"" + 0.014*""broth"" + 0.013*""flavor"" + 0.011*""fried"""
-Topic 4,"0.012*""order"" + 0.011*""like"" + 0.011*""would"" + 0.009*""time"" + 0.009*""one"" + 0.009*""us"" + 0.009*""food"" + 0.008*""got"" + 0.008*""could"" + 0.008*""came"""
+Topic 0,"0.163*""sushi"" + 0.066*""roll"" + 0.052*""rolls"" + 0.022*""fish"" + 0.019*""tuna"" + 0.018*""fresh"" + 0.018*""salmon"" + 0.017*""salad"" + 0.015*""soup"" + 0.014*""tempura"""
+Topic 1,"0.187*""ramen"" + 0.060*""pork"" + 0.054*""noodles"" + 0.048*""broth"" + 0.020*""egg"" + 0.018*""bowl"" + 0.018*""spicy"" + 0.015*""noodle"" + 0.015*""miso"" + 0.013*""belly"""
+Topic 2,"0.122*""tea"" + 0.042*""boba"" + 0.032*""bubble"" + 0.031*""store"" + 0.029*""japanese"" + 0.024*""mizu"" + 0.022*""milk"" + 0.022*""green"" + 0.022*""grocery"" + 0.021*""market"""
+Topic 3,"0.040*""food"" + 0.037*""place"" + 0.030*""good"" + 0.029*""great"" + 0.020*""service"" + 0.015*""delicious"" + 0.015*""back"" + 0.014*""best"" + 0.013*""love"" + 0.012*""definitely"""
+Topic 4,"0.054*""chicken"" + 0.031*""rice"" + 0.031*""sauce"" + 0.029*""fried"" + 0.022*""spicy"" + 0.019*""thai"" + 0.019*""ordered"" + 0.017*""sweet"" + 0.017*""flavor"" + 0.014*""wings"""
+Topic 5,"0.097*""order"" + 0.031*""delivery"" + 0.028*""called"" + 0.026*""ready"" + 0.017*""ordered"" + 0.014*""customer"" + 0.014*""phone"" + 0.014*""take"" + 0.013*""online"" + 0.013*""pick"""
+Topic 6,"0.072*""pho"" + 0.025*""u"" + 0.023*""gluten"" + 0.021*""nyc"" + 0.017*""vic"" + 0.016*""radish"" + 0.014*""watermelon"" + 0.013*""refused"" + 0.013*""free"" + 0.013*""st"""
+Topic 7,"0.042*""us"" + 0.026*""came"" + 0.019*""table"" + 0.016*""food"" + 0.015*""server"" + 0.015*""took"" + 0.015*""asked"" + 0.015*""minutes"" + 0.014*""night"" + 0.013*""ordered"""
+Topic 8,"0.112*""bowl"" + 0.088*""poke"" + 0.037*""bowls"" + 0.028*""rice"" + 0.025*""toppings"" + 0.023*""fish"" + 0.020*""tuna"" + 0.019*""fresh"" + 0.019*""salmon"" + 0.018*""ingredients"""
+Topic 9,"0.023*""like"" + 0.017*""would"" + 0.015*""one"" + 0.014*""get"" + 0.009*""pretty"" + 0.009*""much"" + 0.008*""could"" + 0.008*""really"" + 0.007*""got"" + 0.007*""better"""

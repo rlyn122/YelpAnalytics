@@ -28,22 +28,33 @@ def preprocess(text):
 
 
 cuisines = ["American", "Chinese", "Mexican", "Japanese",""]
-results_dir = "./results/"
+results_dir = "./categorizedResults/"
 os.makedirs(results_dir, exist_ok=True)  # Ensure the results directory exists
 
 for cuisine in cuisines:
     print(f"Processing {cuisine}")
     try:
         # Load the merged CSV file
-        df = pd.read_csv(f"./data/output/merge{cuisine}.csv", usecols=['text'], dtype={'text': 'string'})
-        print(df['text'].apply(lambda x: isinstance(x, str)).all())  # Ensure all entries are strings
+        df = pd.read_csv(f"./data/output/merge{cuisine}.csv", usecols=['text','stars_y'], dtype={'text': 'string','stars_y':'int'})
+        df_pos = df[df['stars_y']>=4]
+        df_neg = df[df['stars_y']<=2]
+        df_neu = df[df['stars_y']==3]
 
-        reviews = df['text'].tolist()
-        print(f"Loaded {len(reviews)} reviews for {cuisine}")
+        review_pos = df_pos['text'].tolist()
+        review_neg = df_neg['text'].tolist()
+        review_neu = df_neu['text'].tolist()
 
-        processed_reviews = [preprocess(review) for review in reviews]
+        pos_doc = ' '.join(map(str,review_pos))
+        neg_doc = ' '.join(map(str,review_neg))
+        neu_doc = ' '.join(map(str,review_neu))
 
-        # Create a dictionary and corpus
+
+        print(f"Loaded {len(review_pos)} positive reviews for {cuisine}")
+        print(f"Loaded {len(review_neg)} negative reviews for {cuisine}")
+        print(f"Loaded {len(review_neu)} neutral reviews for {cuisine}")
+
+        docs = [pos_doc,neg_doc,neu_doc]
+        processed_reviews = [preprocess(review) for review in docs]
 
         # After preprocessing
         non_empty_reviews = [doc for doc in processed_reviews if doc]  # Filter out empty documents 
