@@ -3,6 +3,13 @@ html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.center {
+    border: 5px solid;
+    margin: auto;
+    padding: 10px;
 }
 
 #content section {
@@ -12,13 +19,25 @@ html {
     border-radius: 8px;
 }
 
+h1 {
+    font-family: 'Raleway', sans-serif;
+    /* Ensure Raleway is correctly specified */
+    font-size: 60px;
+    /* Adjusted for better fit */
+}
+
 .hidden {
     display: none;
 }
 
+#h2 {
+    margin-left: 50%;
+    margin-top: 20px;
+    /* Adjusted for better layout */
+}
+
 button {
     padding: 10px 20px;
-    margin-top: 20px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -28,4 +47,32 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+#button1 {
+    margin-left: 80%;
+}
+
+#img1 {
+    max-width: 100%;
+    /* Ensures the image is responsive within its container */
+}
+
+.container {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    /* Updated for image and text alignment */
+    gap: 20px;
+    /* Provides space between the image and text */
+    text-align:
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #4CAF50;
+    z-index: 1000;
 }

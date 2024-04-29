@@ -9,36 +9,64 @@
 </head>
 
 <body>
+    <div id="progress-bar" class="progress-bar"></div>
     <div id="content">
-        <section id="introduction">
-            <h1>Welcome to Our Cultural Analytics Visual Essay</h1>
-            <p>This essay presents a series of analyses that explore different cultural metrics.</p>
+        <section id="title">
+            <div class="center">
+                <div class="container">
+                    <img id="img1" src="./images/influencer.jpeg" alt="Influencer Image">
+                    <h1>How does cuisine impact language used for reviews?</h1>
+                </div>
+                <h2 id="h2">A cultural analysis by Ryan Lin and Noah Lian</h2>
+                <button id="button1" onclick="showSection('Setup')">Get Started</button>
+            </div>
+        </section>
+        <section id="Setup" class="hidden">
+            <p>Our research will investigate how cuisine influences the type of adjectives and words that consumers use
+                across four different cuisines: Chinese, American, Mexican, and Japanese
+                to write reviews using the <a href="https://www.yelp.com/dataset/documentation/main">Yelp Open
+                    Dataset</a>.</p>
             <p>Code to this presentation and results can be found on <a
-                    href="https://github.com/rlyn122/YelpAnalytics">Github</a></p>
-            <button onclick="showSection('analysis1')">Start Exploring</button>
+                    href="https://github.com/rlyn122/YelpAnalytics">Github.</a></p>
+            <h2>Setup: Hypothesis and Goals</h2>
+            <p>blah blah blah</p>
+            <button id="button1" onclick="showSection('title')">Previous</button>
+            <button onclick="showSection('Dataset')">Next</button>
+        </section>
+        <section id="Dataset" class="hidden">
+            <h2>Dataset Used: Yelp Open Dataset</h2>
+            <p>Yelp data set</p>
+            <div id="graph1"><!-- Graph 1 here --></div>
+            <img src="./images/yelp.png">
+            <button id="button1" onclick="showSection('Setup')" class="button1">Previous</button>
+            <button onclick="showSection('analysis1')">Next</button>
         </section>
         <section id="analysis1" class="hidden">
             <h2>Analysis 1: Graph Title</h2>
             <p>Description of what this graph shows.</p>
             <div id="graph1"><!-- Graph 1 here --></div>
-            <button onclick="showSection('analysis2')">Next Analysis</button>
+            <button id="button1" onclick="showSection('Dataset')">Previous</button>
+            <button onclick="showSection('analysis2')">Next</button>
         </section>
         <section id="analysis2" class="hidden">
             <h2>Analysis 2: Graph Title</h2>
             <p>Description of what this graph shows.</p>
             <div id="graph2"><!-- Graph 2 here --></div>
-            <button onclick="showSection('analysis3')">Next Analysis</button>
+            <button id="button1" onclick="showSection('analysis1')">Previous</button>
+            <button onclick="showSection('analysis3')">Next</button>
         </section>
         <section id="analysis3" class="hidden">
             <h2>Analysis 3: Graph Title</h2>
             <p>Description of what this graph shows.</p>
             <div id="graph3"><!-- Graph 3 here --></div>
-            <button onclick="showSection('conclusion')">Go to Conclusion</button>
+            <button id="button1" onclick="showSection('analysis2')">Previous </button>
+            <button onclick="showSection('conclusion')">Next</button>
         </section>
         <section id="conclusion" class="hidden">
             <h2>Conclusion</h2>
             <p>Summary of insights gained from the analyses.</p>
-            <button onclick="showSection('introduction')">Restart</button>
+            <button id="button1" onclick="showSection('analysis3')">Previous</button>
+            <button onclick="showSection('title')">Restart</button>
         </section>
     </div>
     <script src="script.js"></script>
