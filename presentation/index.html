@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Analytics Visual Essay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="content">
+        <section id="introduction">
+            <h1>Welcome to Our Cultural Analytics Visual Essay</h1>
+            <p>This essay presents a series of analyses that explore different cultural metrics.</p>
+            <p>Code to this presentation and results can be found on <a
+                    href="https://github.com/rlyn122/YelpAnalytics">Github</a></p>
+            <button onclick="showSection('analysis1')">Start Exploring</button>
+        </section>
+        <section id="analysis1" class="hidden">
+            <h2>Analysis 1: Graph Title</h2>
+            <p>Description of what this graph shows.</p>
+            <div id="graph1"><!-- Graph 1 here --></div>
+            <button onclick="showSection('analysis2')">Next Analysis</button>
+        </section>
+        <section id="analysis2" class="hidden">
+            <h2>Analysis 2: Graph Title</h2>
+            <p>Description of what this graph shows.</p>
+            <div id="graph2"><!-- Graph 2 here --></div>
+            <button onclick="showSection('analysis3')">Next Analysis</button>
+        </section>
+        <section id="analysis3" class="hidden">
+            <h2>Analysis 3: Graph Title</h2>
+            <p>Description of what this graph shows.</p>
+            <div id="graph3"><!-- Graph 3 here --></div>
+            <button onclick="showSection('conclusion')">Go to Conclusion</button>
+        </section>
+        <section id="conclusion" class="hidden">
+            <h2>Conclusion</h2>
+            <p>Summary of insights gained from the analyses.</p>
+            <button onclick="showSection('introduction')">Restart</button>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

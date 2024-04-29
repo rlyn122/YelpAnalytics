@@ -1,0 +1,6 @@
+Rating,Adjective,Count
+"Rating 1, adjectives:","[('good', 1812), ('bad', 1288), ('chinese', 1230), ('worst', 912), ('last', 795), ('first', 781), ('horrible', 672), ('terrible', 671), ('rude', 546), ('fried', 543)]"
+"Rating 2, adjectives:","[('good', 2350), ('chinese', 1042), ('great', 699), ('bad', 642), ('much', 577), ('first', 574), ('hot', 519), ('better', 500), ('little', 492), ('fried', 477)]"
+"Rating 3, adjectives:","[('good', 4899), ('chinese', 1859), ('great', 1503), ('little', 1210), ('nice', 1080), ('bad', 869), ('much', 805), ('noodle', 803), ('hot', 773), ('best', 762)]"
+"Rating 4, adjectives:","[('good', 10101), ('great', 5255), ('chinese', 4063), ('delicious', 2904), ('little', 2495), ('fresh', 2388), ('nice', 2333), ('best', 2052), ('noodle', 1985), ('hot', 1895)]"
+"Rating 5, adjectives:","[('great', 9523), ('good', 9353), ('delicious', 5795), ('best', 5648), ('chinese', 5478), ('fresh', 4237), ('favorite', 2767), ('nice', 2512), ('hot', 2408), ('many', 2323)]"

@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from spellchecker import SpellChecker
 from nltk.stem import WordNetLemmatizer
+from nltk.tag import pos_tag
 from gensim.corpora import Dictionary
 from gensim.models import LdaModel
 import csv
@@ -12,6 +13,7 @@ import os
 # Download necessary NLTK resources
 nltk.download('wordnet')
 nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')  # POS tagger
 
 # Initialize spell checker and lemmatizer
 spell = SpellChecker()
@@ -31,29 +33,19 @@ manual_stopwords = ['emoji','emotica']
 stop_words.update(manual_stopwords)
 
 def preprocess(text):
-    if text is None:
-        return []
-    tokens = word_tokenize(text.lower())  # Tokenize and convert to lower case
-    corrected_tokens = []
-    print("debug")
-    for word in tokens:
-        if word.isalpha() and word is not None:
-            #check spelling
-            if spell.unknown([word]):
-                corrected_word = spell.correction(word)
-            else:
-                corrected_word = word
-            #lem_word = lemmatizer.lemmatize(spell.correction(corrected_word))
-            lem_word = corrected_word
-            corrected_tokens.append(lem_word)
-
-    filtered_tokens = [w for w in corrected_tokens if w not in stop_words and w.isalpha()]  # Remove stopwords and non-alphabetic tokens
-    return filtered_tokens
+    # Tokenize and convert to lower case
+    tokens = word_tokenize(text.lower())
+    # Apply POS tagging
+    tagged_tokens = pos_tag(tokens)
+    # Filter to get adjectives only, identified by 'JJ', 'JJR', 'JJS' tags
+    adjectives = [word for word, tag in tagged_tokens if tag in ('JJ', 'JJR', 'JJS') and word not in stop_words and word.isalpha()]
+    print("processed one doc")
+    return adjectives
 
 
 
-cuisines = ["Japanese","Chinese", "American", "Mexican" ]
-results_dir = "./results/byRating/"
+cuisines = ["American", "Mexican" ]
+results_dir = "../results/byRating/Adjectives"
 os.makedirs(results_dir, exist_ok=True)  # Ensure the results directory exists
 
 for cuisine in cuisines:
@@ -67,8 +59,6 @@ for cuisine in cuisines:
 
     print("docs being processed..")
     reviews = [preprocess(v) for v in docs]
-    
-
     print("preprocessing done..")
     print(len(reviews))
     for i in range(len(reviews)):

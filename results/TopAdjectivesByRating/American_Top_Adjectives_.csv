@@ -1,0 +1,6 @@
+Rating,Adjective,Count
+"Rating 1, adjectives:","[('good', 19434), ('bad', 10477), ('first', 8417), ('great', 8159), ('worst', 7569), ('last', 7261), ('terrible', 7060), ('horrible', 7034), ('cold', 6150), ('new', 6098)]"
+"Rating 2, adjectives:","[('good', 32483), ('great', 13786), ('nice', 8217), ('bad', 8084), ('first', 7761), ('better', 7017), ('much', 6629), ('little', 6355), ('small', 5734), ('last', 5725)]"
+"Rating 3, adjectives:","[('good', 64381), ('great', 27838), ('nice', 17368), ('little', 14597), ('first', 9272), ('much', 9214), ('bad', 9024), ('best', 8550), ('small', 8342), ('delicious', 8056)]"
+"Rating 4, adjectives:","[('good', 122185), ('great', 89366), ('nice', 36468), ('delicious', 35974), ('little', 31075), ('best', 19888), ('friendly', 18909), ('first', 17317), ('fresh', 17298), ('hot', 15963)]"
+"Rating 5, adjectives:","[('great', 161608), ('good', 110637), ('delicious', 72475), ('best', 60772), ('nice', 36586), ('friendly', 35007), ('fresh', 31845), ('amazing', 30631), ('excellent', 27336), ('little', 26608)]"

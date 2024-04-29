@@ -1,0 +1,6 @@
+Rating,Adjective,Count
+"Rating 1, adjectives:","[('good', 4447), ('worst', 3201), ('bad', 2972), ('mexican', 2331), ('first', 2325), ('last', 2246), ('horrible', 2063), ('terrible', 2052), ('wrong', 1972), ('rude', 1803)]"
+"Rating 2, adjectives:","[('good', 5652), ('mexican', 2244), ('great', 2180), ('bad', 1557), ('first', 1358), ('better', 1350), ('much', 1318), ('nice', 1306), ('little', 1235), ('last', 1107)]"
+"Rating 3, adjectives:","[('good', 10817), ('great', 4266), ('mexican', 3225), ('little', 2599), ('nice', 2539), ('bad', 1710), ('much', 1658), ('first', 1582), ('best', 1508), ('small', 1483)]"
+"Rating 4, adjectives:","[('good', 20425), ('great', 13699), ('mexican', 7010), ('delicious', 6301), ('little', 5398), ('nice', 5325), ('fresh', 4862), ('best', 3706), ('friendly', 3387), ('tasty', 2995)]"
+"Rating 5, adjectives:","[('great', 29301), ('good', 22767), ('delicious', 15741), ('best', 13938), ('mexican', 12799), ('fresh', 10416), ('friendly', 7374), ('nice', 6778), ('amazing', 6001), ('favorite', 5926)]"
