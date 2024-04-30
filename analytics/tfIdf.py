@@ -17,11 +17,9 @@ stop_words = set(stopwords.words('english'))
 manual_stopwords = ['emoji', 'emoticon', 'good', 'great', 'best', 'bad', 'first', 'new', 'nice', 'much']
 stop_words.update(manual_stopwords)
 
-def preprocess_and_find_adjectives(text):
-    tokens = word_tokenize(text.lower())
-    tagged_tokens = pos_tag(tokens)
-    return ' '.join([word for word, tag in tagged_tokens if tag in ('JJ', 'JJR', 'JJS') and word not in stop_words and word.isalpha()])
-
+def tokenize_words(text):
+    tokens = word_tokenize(text.lower())  
+    return ' '.join([word for word in tokens if word.isalpha() and word not in stop_words])
 def extract_top_words_with_freq(df_tfidf, df_freq, top_n=10):
     top_words_data = []
     for index in df_tfidf.index:
@@ -53,7 +51,7 @@ def tfidf_analysis(grouped_texts, top_n=10):
     return df_tfidf, df_freq
 
 def save_tfidf(df_tfidf, cuisine):
-    results_dir = "../results/TFIDFAnalysisByRating"
+    results_dir = "../results/TFIDFAnalysisByRatingAll"
     os.makedirs(results_dir, exist_ok=True)
     filename = os.path.join(results_dir, f"{cuisine}_TFIDF.csv")
     df_tfidf.to_csv(filename, index=False)  
@@ -64,7 +62,7 @@ for cuisine in cuisines:
     print(f"Processing {cuisine}")
     df = pd.read_csv(f"../data/output/merge{cuisine}.csv", usecols=['text', 'stars_y'], dtype={'text': 'string', 'stars_y': 'int'})
     grouped_texts = df.groupby('stars_y')['text'].apply(lambda texts: ' '.join(texts)).reset_index()
-    grouped_texts['text'] = grouped_texts['text'].apply(preprocess_and_find_adjectives)
+    grouped_texts['text'] = grouped_texts['text'].apply(tokenize_words)
 
     df_tfidf, df_freq = tfidf_analysis(grouped_texts)
     top_words_with_freq = extract_top_words_with_freq(df_tfidf, df_freq, top_n=10)
