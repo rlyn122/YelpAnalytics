@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cultural Analytics Visual Essay</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./presentation/styles.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
         <section id="title">
             <div class="center">
                 <div class="container">
-                    <img id="img1" src="./images/influencer.jpeg" alt="Influencer Image">
+                    <img id="img1" src="./presentation/images/influencer.jpeg" alt="Influencer Image">
                     <h1>How does cuisine impact language used for reviews?</h1>
                 </div>
                 <h2 id="h2">A cultural analysis by Ryan Lin and Noah Lian</h2>
@@ -22,13 +22,14 @@
             </div>
         </section>
         <section id="Setup" class="hidden">
+            <h2>Setup: Hypothesis and Goals</h2>
+
             <p>Our research will investigate how cuisine influences the type of adjectives and words that consumers use
                 across four different cuisines: Chinese, American, Mexican, and Japanese
                 to write reviews using the <a href="https://www.yelp.com/dataset/documentation/main">Yelp Open
                     Dataset</a>.</p>
             <p>Code to this presentation and results can be found on <a
                     href="https://github.com/rlyn122/YelpAnalytics">Github.</a></p>
-            <h2>Setup: Hypothesis and Goals</h2>
             <p>blah blah blah</p>
             <button id="button1" onclick="showSection('title')">Previous</button>
             <button onclick="showSection('Dataset')">Next</button>
@@ -37,7 +38,7 @@
             <h2>Dataset Used: Yelp Open Dataset</h2>
             <p>Yelp data set</p>
             <div id="graph1"><!-- Graph 1 here --></div>
-            <img src="./images/yelp.png">
+            <img src="./presentation/images/yelp.png">
             <button id="button1" onclick="showSection('Setup')" class="button1">Previous</button>
             <button onclick="showSection('analysis1')">Next</button>
         </section>
@@ -69,7 +70,7 @@
             <button onclick="showSection('title')">Restart</button>
         </section>
     </div>
-    <script src="script.js"></script>
+    <script src="./presentation/script.js"></script>
 </body>
 
 </html>
