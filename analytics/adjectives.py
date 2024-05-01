@@ -40,11 +40,11 @@ def save_adjectives(adjectives, cuisine):
             writer.writerow([rating, adj_list])
 
 
-cuisines = [ "Mexican","Chinese","Japanese","American"]
+cuisines = ["American"]
 
 for cuisine in cuisines:
     print(f"Processing {cuisine}")
-    df = pd.read_csv(f"./data/output/merge{cuisine}.csv", usecols=['text','stars_y'], dtype={'text': 'string','stars_y':'int'})
+    df = pd.read_csv(f"../data/output/merge{cuisine}.csv", usecols=['text','stars_y'], dtype={'text': 'string','stars_y':'int'})
     grouped_texts = df.groupby('stars_y')['text'].apply(lambda texts: ' '.join(texts)).reset_index()
     
     adjectives = {}

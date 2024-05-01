@@ -92,20 +92,72 @@
         <section id="analysis1" class="hidden">
             <div class="center2">
                 <h2>Analysis 1: Topic Modeling</h2>
-                <p>As we were obtaining the data, we discovered that the way in which we grouped our documents to create
+
+                <p> Our first method of analysis was <strong>topic modeling</strong>. Using natural language tool it, we
+                    first processed
+                    out stop words and filtered the data. Next we used Gensim's LDA (Latent Direchlet Allocation) model
+                    to do topic modeling. An LDA is a supervised machine learning model that allows us to extract
+                    popular topics from a given corpus.</p>
+
+                <p>
+                    As we were obtaining the data, we discovered that the way in which we grouped our documents to
+                    create
                     a
-                    corpus had an impact on the results of the model. We grouped our data by review, rating, restaurant,
+                    corpus had a strong impact on the results of the model.
+
+                    We tried various groupings of documents, specifically grouping by review, rating, restaurant,
                     and
                     combinations of each, obtaining a different set of results each time we submitted the data. Despite
-                    obtaining a variety of varying results, we couldn’t find any significant patterns or anything that
-                    stood
-                    out. Much of the results was filled with neutral words such as “burger” or “tacos” or slang and
+                    obtaining a variety of varying results, we couldn’t find any extremely significant patterns. The
+                    most interesting result, however, came about by grouping documents by the rating in each cusine.
+                    Below you can see two examples of outputs of the topic model when grouping documents by review
+                    rating. The number associated represent the weight of the word.</p>
+
+                <div>
+                    <h2>Japanese Reviews</h2>
+                    <img id="topicImg" src="./images/japanese_byRating.png">
+                </div>
+                <div>
+                    <h2>Mexican Reviews</h2>
+                    <img id="topicImg" src="./images/mexican_byRating.png">
+                </div>
+
+
+
+                <p>
+                    Much of the results was filled with neutral words such as “burger” or “tacos” or slang and
                     foreign
                     language words like “chipilon” and “messikin.” We wanted to focus on the adjectives, and cleaned out
                     all
-                    the unnecessary clutter before running the data through again.
+                    the unnecessary clutter before running the data through again, but you can see some promising
+                    results in these. For example, Topic 0 in Japanese reviews talks about cockroaches and puke.
+                    Additionally the Topic 4 in Mexican reviews discusses racism, liars, and livid. Ideally, we would be
+                    able to attribute specific words that are used to describe specific cuisines. Below, we show results
+                    for topic modeling Chinese and American cuisines.
                 </p>
-                <div id="graph1"><!-- Graph 1 here --></div>
+                <h2>Chinese Reviews</h2>
+                <div>
+                    <img id="topicImg" src="./images/chinese_byRating.png">
+                </div>
+                <div>
+                    <h2>American Reviews</h2>
+                    <img id="topicImg" src="./images/american_byRating.png">
+                </div>
+                <p>
+                    In the Chinese and American reviews, you can see interesting negative topics as well. For example,
+                    Topic
+                    4 about Chinese cuisine demonstrates negativity about service and location calling restaraunts rude,
+                    disrespected, and moldy. Notably, for some reason there seems to be alot of out of place words such
+                    as
+                    metropolitan, fox, or reuban. There seems to be a theme of cockroaches and puke for both Chinese and
+                    Japanese cuisine. The American topic modeling is questionable as there seems to be many non-words or
+                    non-English words, but Topic 4 is interesting in that it explores negative words such as abusing,
+                    racists, and pba. Funny enough, beer and racists definetly represents an American stereotype!
+                    Furthermore, calling Asian restaruants and food dirty is a common stereotype as well.
+                    Although the data has some interesting points, we thought topic modeling did not show enough
+                    decisive
+                    and clear trends. Therefore, we tried another type of analysis: top adjective counts.
+                </p>
             </div>
             <button id="button1" onclick="showSection('Dataset')">Previous</button>
             <button onclick="showSection('analysis2')">Next</button>
@@ -113,19 +165,13 @@
         <section id="analysis2" class="hidden">
             <div class="center2">
                 <h2>Analysis 2: Top Adjectives</h2>
-                <p>Description of what this graph shows.</p>
-                <div id="graph2"><!-- Graph 2 here --></div>
-            </div>
+                <p>Top adjectives is simple, we just searched for the top used adjectives in each rating category. </p>
+                <p>We decide to search for all top adjectives, but at first when running this, we got "good" as the
+                    overwhelmingly top used adjectives for every rating across almost every cuisine. Therefore we
+                    decided to manually filter out non-descriptive words such as good, great, nice, much ... </p>
 
-            <button id="button1" onclick="showSection('analysis1')">Previous</button>
-
-            <button onclick="showSection('analysis3')">Next</button>
-        </section>
-        <section id="analysis3" class="hidden">
-            <div class="center2">
-
-                <h2>Analysis 3: TF-IDF Analysis</h2>
-                <p>In our analysis of TF-IDF results, we observed intriguing patterns in how customers mentioned the
+                <p>In our analysis of Top Adjectives results, we observed intriguing patterns in how customers mentioned
+                    the
                     cuisine
                     of restaurants in their reviews. The term 'Chinese' emerged as the most frequently used descriptor
                     for
@@ -136,6 +182,18 @@
                     term in customer reviews across all ratings.
 
                 </p>
+                <div>
+                    <h2>Chinese Top Adjectives</h2>
+                    <div class="row">
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/ChineseTopAdj.png">
+                        </div>
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TopAdjCWC.png">
+                        </div>
+                    </div>
+                </div>
+
                 <p>
                     Reviews of Japanese restaurants frequently included the term 'Japanese' among the top 10 most used
                     words
@@ -152,7 +210,7 @@
                     restaurant feedback.
                 </p>
                 <p>
-                    Another pattern we noticed from the TF-IDF results is that, of all the various elements of a
+                    Another pattern we noticed from the Top Adjectives results is that, of all the various elements of a
                     restaurant,
                     the taste of the food seems to be the most important. Terms such as ‘delicious’ and ‘fresh’ were
                     constantly used throughout all cuisines and all ratings, which was surprising to us. We imagined
@@ -165,7 +223,59 @@
                     than
                     the other factors.
                 </p>
-                <div id="graph3"><!-- Graph 3 here --></div>
+                <div>
+                    <h2>Mexican Top Adjectives</h2>
+                    <div class="row">
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/mexicanTopAdj.png">
+                        </div>
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TopAdjMWCpng.png">
+                        </div>
+                    </div>
+                </div>
+                <p>Not all graphs were included for brevity.</p>
+
+                <p>Top Adjectives again did not get enough descriptive words that we were searching for to confirm
+                    stereotype and biases in reviews, so we tried TF-IDF analysis.</p>
+            </div>
+
+            <button id="button1" onclick="showSection('analysis1')">Previous</button>
+
+            <button onclick="showSection('analysis3')">Next</button>
+        </section>
+        <section id="analysis3" class="hidden">
+            <div class="center2">
+
+                <h2>Analysis 3: TF-IDF Analysis</h2>
+                <p> TF-IDF analysis is a way of measuring the significance of each word by its TF (Term frequency) and
+                    IDF (Inverse Document Frequency) score. This method of analysis adjusts for the fact that some words
+                    appear more frequent than others. </p>
+
+                <h2>TFIDF on Japanese and American Cuisines</h2>
+                <h2>1 Star Rating: </h2>
+                <div id="1 Star" class="row">
+                    <div class="column">
+                        <img id="topAdjImg" src="presentation/graphs/TFIDFA1.png">
+
+                    </div>
+                    <div class="column">
+                        <img id="topAdjImg" src="presentation/graphs/TFIDFJ1.png">
+                    </div>
+                </div>
+
+                <div id="2 Star">
+                    <h2>5 Star Rating: </h2>
+                    <div class="row">
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TFIDFA5.png">
+                        </div>
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TFIDFJ2.png">
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <button id="button1" onclick="showSection('analysis2')">Previous </button>
             <button onclick="showSection('conclusion')">Next</button>

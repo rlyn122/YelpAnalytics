@@ -77,14 +77,34 @@ button:hover {
     border: 2px solid;
 }
 
+#topicImg {
+    max-width: 100%;
+    border: 2px solid;
+}
+
+#topAdjImg {
+    max-width: 100%;
+    border: 2px solid;
+}
+
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 50%;
+    padding: 5px;
+}
+
+
 .container {
     display: grid;
     align-items: center;
     grid-template-columns: 50% 50%;
     /* Updated for image and text alignment */
     gap: 20px;
-    /* Provides space between the image and text */
-    text-align:
+
 }
 
 .progress-bar {
