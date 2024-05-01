@@ -6,11 +6,25 @@ html {
     background-color: #f4f4f4;
 }
 
+
+p {
+    padding: 5px;
+    font-size: large;
+}
+
 .center {
     border: 5px solid;
     margin: auto;
     padding: 10px;
 }
+
+
+.center2 {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+}
+
 
 #content section {
     padding: 20px;
@@ -31,7 +45,7 @@ h1 {
 }
 
 #h2 {
-    margin-left: 50%;
+    margin-left: 55%;
     margin-top: 20px;
     /* Adjusted for better layout */
 }
@@ -56,6 +70,11 @@ button:hover {
 #img1 {
     max-width: 100%;
     /* Ensures the image is responsive within its container */
+}
+
+#json {
+    max-width: 30%;
+    border: 2px solid;
 }
 
 .container {

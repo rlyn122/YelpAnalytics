@@ -22,50 +22,163 @@
             </div>
         </section>
         <section id="Setup" class="hidden">
-            <h2>Setup: Hypothesis and Goals</h2>
+            <div class="center2">
 
-            <p>Our research will investigate how cuisine influences the type of adjectives and words that consumers use
-                across four different cuisines: Chinese, American, Mexican, and Japanese
-                to write reviews using the <a href="https://www.yelp.com/dataset/documentation/main">Yelp Open
-                    Dataset</a>.</p>
-            <p>Code to this presentation and results can be found on <a
-                    href="https://github.com/rlyn122/YelpAnalytics">Github.</a></p>
-            <p>blah blah blah</p>
+                <h2>Setup: Hypothesis and Goals</h2>
+
+                <p>Our research will investigate how cuisine influences the type of adjectives and words
+                    that
+                    consumers use
+                    across four different cuisines: <strong> Chinese, American, Mexican, and Japanese </strong>. Our
+                    project
+                    has centered
+                    around the question of customers' expectations about various food cuisines. We ask the question:
+                </p>
+                <em>
+                    <p>How does cuisine impact the adjectives used for reviews? </p>
+                </em>
+                <p>
+                    Before we obtained the results, <strong>we hypothesized that because of consumer expectations,
+                        racial
+                        stereotypes will be reflected in both positive and negative Yelp reviews </strong>. This would
+                    arise
+                    with
+                    adjectives being used to describe the cleanliness of businesses (where typical Chinese and
+                    Mexican
+                    businesses are less appealing to Americans than Japanese ones, for example), cost, taste of
+                    food, and
+                    staff behavior.
+                </p>
+                <p>Code to this presentation and results can be found on <a
+                        href="https://github.com/rlyn122/YelpAnalytics">Github</a>
+                    and data at <a href="https://www.yelp.com/dataset/documentation/main">Yelp Open
+                        Dataset</a></p>
+            </div>
             <button id="button1" onclick="showSection('title')">Previous</button>
             <button onclick="showSection('Dataset')">Next</button>
         </section>
         <section id="Dataset" class="hidden">
-            <h2>Dataset Used: Yelp Open Dataset</h2>
-            <p>Yelp data set</p>
+            <div class="center2">
+                <h2>Dataset Used: Yelp Open Dataset</h2>
+                <p>Using Yelp as our main dataset for customer reviews
+                    in restaurants all over the country, we grouped restaurants with more than ten reviews into four
+                    separate categories: American, Chinese, Mexican, and Japanese restaurants. All other samples that
+                    did
+                    not fit in any of these categories were discarded. Despite cutting out restaurants that did not fit
+                    our
+                    criteria, we still wound up with a huge sample: 590,000 reviews for American restaurants, 52,000 for
+                    Chinese restaurants, 126,000 for Mexican restaurants, and 39,000 for Japanese restaurants, amounting
+                    to
+                    more than 800,000 reviews.
+                </p>
+                <p>We used<strong> three main methods of analysis:</strong>
+                <ol>
+                    <li>Topic Modeling</li>
+                    <li>Top Adjectives</li>
+                    <li>TF-IDF Scores</li>
+                </ol>
+
+                </p>
+                <p>Below are two examples of data given by yelp, the left shows business.json
+                    and the right shows review.json</p>
+                <img id="json" src="./images/business.png">
+                <img id="json" src="./images/review.png">
+                <img src="./images/yelp.png">
+            </div>
             <div id="graph1"><!-- Graph 1 here --></div>
-            <img src="./images/yelp.png">
             <button id="button1" onclick="showSection('Setup')" class="button1">Previous</button>
             <button onclick="showSection('analysis1')">Next</button>
         </section>
         <section id="analysis1" class="hidden">
-            <h2>Analysis 1: Graph Title</h2>
-            <p>Description of what this graph shows.</p>
-            <div id="graph1"><!-- Graph 1 here --></div>
+            <div class="center2">
+                <h2>Analysis 1: Topic Modeling</h2>
+                <p>As we were obtaining the data, we discovered that the way in which we grouped our documents to create
+                    a
+                    corpus had an impact on the results of the model. We grouped our data by review, rating, restaurant,
+                    and
+                    combinations of each, obtaining a different set of results each time we submitted the data. Despite
+                    obtaining a variety of varying results, we couldn’t find any significant patterns or anything that
+                    stood
+                    out. Much of the results was filled with neutral words such as “burger” or “tacos” or slang and
+                    foreign
+                    language words like “chipilon” and “messikin.” We wanted to focus on the adjectives, and cleaned out
+                    all
+                    the unnecessary clutter before running the data through again.
+                </p>
+                <div id="graph1"><!-- Graph 1 here --></div>
+            </div>
             <button id="button1" onclick="showSection('Dataset')">Previous</button>
             <button onclick="showSection('analysis2')">Next</button>
         </section>
         <section id="analysis2" class="hidden">
-            <h2>Analysis 2: Graph Title</h2>
-            <p>Description of what this graph shows.</p>
-            <div id="graph2"><!-- Graph 2 here --></div>
+            <div class="center2">
+                <h2>Analysis 2: Top Adjectives</h2>
+                <p>Description of what this graph shows.</p>
+                <div id="graph2"><!-- Graph 2 here --></div>
+            </div>
+
             <button id="button1" onclick="showSection('analysis1')">Previous</button>
+
             <button onclick="showSection('analysis3')">Next</button>
         </section>
         <section id="analysis3" class="hidden">
-            <h2>Analysis 3: Graph Title</h2>
-            <p>Description of what this graph shows.</p>
-            <div id="graph3"><!-- Graph 3 here --></div>
+            <div class="center2">
+
+                <h2>Analysis 3: TF-IDF Analysis</h2>
+                <p>In our analysis of TF-IDF results, we observed intriguing patterns in how customers mentioned the
+                    cuisine
+                    of restaurants in their reviews. The term 'Chinese' emerged as the most frequently used descriptor
+                    for
+                    food and service across all five ratings for Chinese restaurants, except in 5-star reviews where
+                    'Chinese' was the second most common term, with 'Delicious' taking the top spot. Similarly, Mexican
+                    restaurants followed a comparable trend, with 'Mexican' either being the most or second most
+                    utilized
+                    term in customer reviews across all ratings.
+
+                </p>
+                <p>
+                    Reviews of Japanese restaurants frequently included the term 'Japanese' among the top 10 most used
+                    words
+                    across various ratings. Conversely, terms like "American" or "Western" were not prevalent
+                    descriptors
+                    for American cuisine in the reviews. Given that most of our sample was from American restaurants, it
+                    suggests that such terms may be considered redundant since Western and American food are often
+                    perceived
+                    as the norm in this context. However, this observation also underscores the phenomenon of 'othering'
+                    when discussing cuisines from cultures outside of America.
+                    Our next step involves collecting data on European cuisines to explore potential differences in
+                    customer
+                    reviews and further understand how different culinary backgrounds are perceived and described in
+                    restaurant feedback.
+                </p>
+                <p>
+                    Another pattern we noticed from the TF-IDF results is that, of all the various elements of a
+                    restaurant,
+                    the taste of the food seems to be the most important. Terms such as ‘delicious’ and ‘fresh’ were
+                    constantly used throughout all cuisines and all ratings, which was surprising to us. We imagined
+                    terms
+                    describing the restaurants’ cleanliness and customer service to be as frequent as terms describing
+                    the
+                    food. Admittedly, customer service is mentioned quite a bit, especially in the more extreme reviews
+                    (1
+                    and 5-star ratings) with terms such as “rude” and “friendly,” but food was mentioned 2-4 times more
+                    than
+                    the other factors.
+                </p>
+                <div id="graph3"><!-- Graph 3 here --></div>
+            </div>
             <button id="button1" onclick="showSection('analysis2')">Previous </button>
             <button onclick="showSection('conclusion')">Next</button>
         </section>
         <section id="conclusion" class="hidden">
-            <h2>Conclusion</h2>
-            <p>Summary of insights gained from the analyses.</p>
+            <div class="center2">
+
+                <h2>Conclusion</h2>
+                <p>Although our initial data did not show any promising pattern, we seem to be heading in the right
+                    direction. With further cleaning and optimisation of the groupings, we will be able to find useful
+                    data
+                    for our project.</p>
+            </div>
             <button id="button1" onclick="showSection('analysis3')">Previous</button>
             <button onclick="showSection('title')">Restart</button>
         </section>
