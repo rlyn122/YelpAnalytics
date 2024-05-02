@@ -234,14 +234,27 @@
                         </div>
                     </div>
                 </div>
-                <p>Not all graphs were included for brevity.</p>
+
+                <div class="row">
+                    <div class="column">
+                        <h2>Japanese Word Cloud</h2>
+                        <img id="topAdjImg" src="presentation/graphs/TopAdjJWC.png">
+                    </div>
+                    <div class="column">
+                        <h2>American Word Cloud</h2>
+                        <img id="topAdjImg" src="presentation/graphs/TopAdjAWC.png">
+
+                    </div>
+                </div>
+                <p>Not all graphs were included for brevity and results were fairly similar, but all graphs can be
+                    found <a href="https://github.com/rlyn122/YelpAnalytics/tree/deploy/presentation/graphs">here.</a>
+                </p>
 
                 <p>Top Adjectives again did not get enough descriptive words that we were searching for to confirm
                     stereotype and biases in reviews, so we tried TF-IDF analysis.</p>
             </div>
 
             <button id="button1" onclick="showSection('analysis1')">Previous</button>
-
             <button onclick="showSection('analysis3')">Next</button>
         </section>
         <section id="analysis3" class="hidden">
@@ -252,7 +265,7 @@
                     IDF (Inverse Document Frequency) score. This method of analysis adjusts for the fact that some words
                     appear more frequent than others. </p>
 
-                <h2>TFIDF on Japanese and American Cuisines</h2>
+                <h2>TFIDF on All 4 Cuisines</h2>
                 <h2>1 Star Rating: </h2>
                 <div id="1 Star" class="row">
                     <div class="column">
@@ -261,6 +274,15 @@
                     </div>
                     <div class="column">
                         <img id="topAdjImg" src="presentation/graphs/TFIDFJ1.png">
+                    </div>
+                </div>
+                <div id="1 Star" class="row">
+                    <div class="column">
+                        <img id="topAdjImg" src="presentation/graphs/TFIDF/Mexican1_TFIDF.png">
+
+                    </div>
+                    <div class="column">
+                        <img id="topAdjImg" src="presentation/graphs/TFIDF/Chinese1_TFIDF.png">
                     </div>
                 </div>
 
@@ -273,10 +295,24 @@
                         <div class="column">
                             <img id="topAdjImg" src="presentation/graphs/TFIDFJ2.png">
                         </div>
-
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TFIDF/Mexican5_TFIDF.png">
+                        </div>
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TFIDF/Chinese5_TFIDF.png">
+                        </div>
                     </div>
                 </div>
+                <p>Again, not all graphs were included for brevity because results were fairly similar, but all graphs
+                    for TFIDF analysis
+                    can be
+                    found <a
+                        href="https://github.com/rlyn122/YelpAnalytics/tree/deploy/presentation/graphs/TFIDF">here.</a>
+                </p>
             </div>
+
             <button id="button1" onclick="showSection('analysis2')">Previous </button>
             <button onclick="showSection('conclusion')">Next</button>
         </section>
