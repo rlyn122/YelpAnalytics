@@ -1,5 +1,7 @@
 # YelpAnalytics
  Analyzing food trends and regional cuisines through Yelp Open Dataset
+Checkout our visual essay: https://rlyn122.github.io/YelpAnalytics/
+
 
  We explored three different types of analysis:
  1. Topic Modeling
