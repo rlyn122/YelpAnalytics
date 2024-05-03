@@ -38,16 +38,13 @@
                     <p>How does cuisine impact the adjectives used for reviews? </p>
                 </em>
                 <p>
-                    Before we obtained the results, <strong>we hypothesized that because of consumer expectations,
+                    <strong>We hypothesized that because of consumer biases,
                         racial
                         stereotypes will be reflected in both positive and negative Yelp reviews </strong>. This would
-                    arise
-                    with
-                    adjectives being used to describe the cleanliness of businesses (where typical Chinese and
-                    Mexican
-                    businesses are less appealing to Americans than Japanese ones, for example), cost, taste of
-                    food, and
-                    staff behavior.
+                    be observed by
+                    specifically high use of adjectives to
+                    that target a certain cuisine. For example, racial biases might increase the use of certain words to discuss qualities of a business such as cost, taste of
+                    food, service and more. The goal of this project is to uncover these trends.
                 </p>
                 <p>Code to this presentation and results can be found on <a
                         href="https://github.com/rlyn122/YelpAnalytics">Github</a>
@@ -61,7 +58,7 @@
             <div class="center2">
                 <h2>Dataset Used: Yelp Open Dataset</h2>
                 <p>Using Yelp as our main dataset for customer reviews
-                    in restaurants all over the country, we grouped restaurants with more than ten reviews into four
+                    in restaurants all over the country, we filtered data to include all restaurants with more than ten reviews into four
                     separate categories: American, Chinese, Mexican, and Japanese restaurants. All other samples that
                     did
                     not fit in any of these categories were discarded. Despite cutting out restaurants that did not fit
@@ -79,13 +76,12 @@
                 </ol>
 
                 </p>
-                <p>Below are two examples of data given by yelp, the left shows business.json
+                <p>Below are two examples of data given by Yelp, the left shows business.json
                     and the right shows review.json</p>
                 <img id="json" src="./images/business.png">
                 <img id="json" src="./images/review.png">
                 <img src="./images/yelp.png">
             </div>
-            <div id="graph1"><!-- Graph 1 here --></div>
             <button id="button1" onclick="showSection('Setup')" class="button1">Previous</button>
             <button onclick="showSection('analysis1')">Next</button>
         </section>
@@ -93,10 +89,10 @@
             <div class="center2">
                 <h2>Analysis 1: Topic Modeling</h2>
 
-                <p> Our first method of analysis was <strong>topic modeling</strong>. Using natural language tool it, we
+                <p> Our first method of analysis was <strong>topic modeling</strong>. Using the NLTK (Natural Language Tool Kit) in python, we
                     first processed
                     out stop words and filtered the data. Next we used Gensim's LDA (Latent Direchlet Allocation) model
-                    to do topic modeling. An LDA is a supervised machine learning model that allows us to extract
+                    to do topic modeling. In short, an LDA is a supervised machine learning model that allows us to extract
                     popular topics from a given corpus.</p>
 
                 <p>
@@ -125,11 +121,10 @@
 
 
                 <p>
-                    Much of the results was filled with neutral words such as “burger” or “tacos” or slang and
+                    Much of the results was filled with neutral words and food items, slang, or
                     foreign
-                    language words like “chipilon” and “messikin.” We wanted to focus on the adjectives, and cleaned out
-                    all
-                    the unnecessary clutter before running the data through again, but you can see some promising
+                    language. In the Mexican results you can see the words “chipilon”, "yumm", "merrch", and “messikin.” 
+                    This made it evident there was still unnecessary clutter in the data, but you can see some promising
                     results in these. For example, Topic 0 in Japanese reviews talks about cockroaches and puke.
                     Additionally the Topic 4 in Mexican reviews discusses racism, liars, and livid. Ideally, we would be
                     able to attribute specific words that are used to describe specific cuisines. Below, we show results
@@ -144,19 +139,20 @@
                     <img id="topicImg" src="./images/american_byRating.png">
                 </div>
                 <p>
-                    In the Chinese and American reviews, you can see interesting negative topics as well. For example,
-                    Topic
-                    4 about Chinese cuisine demonstrates negativity about service and location calling restaraunts rude,
-                    disrespected, and moldy. Notably, for some reason there seems to be alot of out of place words such
-                    as
-                    metropolitan, fox, or reuban. There seems to be a theme of cockroaches and puke for both Chinese and
-                    Japanese cuisine. The American topic modeling is questionable as there seems to be many non-words or
-                    non-English words, but Topic 4 is interesting in that it explores negative words such as abusing,
-                    racists, and pba. Funny enough, beer and racists definetly represents an American stereotype!
-                    Furthermore, calling Asian restaruants and food dirty is a common stereotype as well.
-                    Although the data has some interesting points, we thought topic modeling did not show enough
-                    decisive
-                    and clear trends. Therefore, we tried another type of analysis: top adjective counts.
+                    Negative themes emerge when looking through the reviews collected for Chinese and American restaurants. For instance, in Topic 4 concerning Chinese cuisine, criticisms focus on poor service and location, describing the restaurant staff and venue as rude, disrespectful, and moldy. Interestingly, certain unusual words like "metropolitan," "fox," and "reuben" appear, seemingly out of place. This could be due to a significant number of poor reviews coming from restaurants that serve fusion food, a common practice in Chinese restaurants.
+                    </p>
+                    <p>
+The prevalence of mentions of cockroaches and vomit across Chinese and Japanese cuisine topics suggests that the venues are not unkept well, with hygiene not being a priority. 
+This is a serious concern as food poisoning due to unsanitary conditions could occur, and could lose the restaraunt business. Regardless, this did meet our hypothesis,
+ as the common stereotype of labeling Asian restaurants and food
+ as dirty is shown to be prevalent in these reviews. Notably, there is no topic that us strongly negative about cleanliness in either Mexican or American Topic Model results.
+    Whether or not Chinese and Japanese restaraunts are simply more dirty than American and Mexican restaraunts, we do not know but is unlikely. 
+    Therefore, the prevalence of these topics of cleanliness in Asian cuisines <strong> does not quite confirm </strong> the presence of Asian stereotypes in cuisine reviews but it is a good sign of evidence for it.
+    Additionally, results may be influenced by inherent biases of the Yelp Dataset and in this sense, jumping to strong conclusions should be avoided.
+</p>
+<p>
+In American reviews, the validity of topic modeling is questionable due to the presence of many non-words or non-English terms. However, Topic 4 stands out for its exploration of negative terms such as "abusing," "racists," and "pba." References to "beer" and "racists" epitomize American stereotypes. While the data presents interesting insights, we found that topic modeling did not reveal sufficiently clear and decisive trends. Therefore, we pursued an alternative analysis method: examining top adjective counts.
+
                 </p>
             </div>
             <button id="button1" onclick="showSection('Dataset')">Previous</button>
@@ -165,23 +161,10 @@
         <section id="analysis2" class="hidden">
             <div class="center2">
                 <h2>Analysis 2: Top Adjectives</h2>
-                <p>Top adjectives is simple, we just searched for the top used adjectives in each rating category. </p>
-                <p>We decide to search for all top adjectives, but at first when running this, we got "good" as the
-                    overwhelmingly top used adjectives for every rating across almost every cuisine. Therefore we
-                    decided to manually filter out non-descriptive words such as good, great, nice, much ... </p>
-
-                <p>In our analysis of Top Adjectives results, we observed intriguing patterns in how customers mentioned
-                    the
-                    cuisine
-                    of restaurants in their reviews. The term 'Chinese' emerged as the most frequently used descriptor
-                    for
-                    food and service across all five ratings for Chinese restaurants, except in 5-star reviews where
-                    'Chinese' was the second most common term, with 'Delicious' taking the top spot. Similarly, Mexican
-                    restaurants followed a comparable trend, with 'Mexican' either being the most or second most
-                    utilized
-                    term in customer reviews across all ratings.
-
-                </p>
+                <p>Top adjectives is simple. Instead of a complex machine learning algorithm, we can just search for the most frequent adjectives in each rating category. We thought this might be a more simple and intuitive way to search for racial stereotype biases.</p>
+                <p>We decide to search for all top adjectives. At first, we filtered out the data to get all adjectives, but when running the top adjectives algorithm, we got "good" as the
+                    overwhelmingly top used adjective for every rating across almost every cuisine. Therefore we
+                    decided to manually filter out non-descriptive words such as good, great, nice, much ... After running the model again, we got slightly more interesting results: </p>
                 <div>
                     <h2>Chinese Top Adjectives</h2>
                     <div class="row">
@@ -193,7 +176,42 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <h2>Mexican Top Adjectives</h2>
+                    <div class="row">
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/MexicanTopAdj.png">
+                        </div>
+                        <div class="column">
+                            <img id="topAdjImg" src="presentation/graphs/TopAdjMWCpng.png">
+                        </div>
+                    </div>
+                </div>
+                <p>In our analysis of Top Adjectives results, we observed intriguing patterns in how customers mentioned
+                    the
+                    cuisine
+                    of restaurants in their reviews. The term 'Chinese' emerged as the most frequently used descriptor
+                    for
+                    food and service across all five ratings for Chinese restaurants, except in 5-star reviews where
+                    'Chinese' was the second most common term, with 'Delicious' taking the top spot.
 
+                    Similarly, Mexican
+                    restaurants followed a comparable trend, with 'Mexican' either being the most or second most
+                    utilized
+                    term in customer reviews across all ratings.
+                    
+                </p>
+                <div class="row">
+                    <div class="column">
+                        <h2>Japanese Word Cloud</h2>
+                        <img id="topAdjImg" src="presentation/graphs/TopAdjJWC.png">
+                    </div>
+                    <div class="column">
+                        <h2>American Word Cloud</h2>
+                        <img id="topAdjImg" src="presentation/graphs/TopAdjAWC.png">
+
+                    </div>
+                </div>
                 <p>
                     Reviews of Japanese restaurants frequently included the term 'Japanese' among the top 10 most used
                     words
@@ -204,10 +222,6 @@
                     perceived
                     as the norm in this context. However, this observation also underscores the phenomenon of 'othering'
                     when discussing cuisines from cultures outside of America.
-                    Our next step involves collecting data on European cuisines to explore potential differences in
-                    customer
-                    reviews and further understand how different culinary backgrounds are perceived and described in
-                    restaurant feedback.
                 </p>
                 <p>
                     Another pattern we noticed from the Top Adjectives results is that, of all the various elements of a
@@ -223,29 +237,6 @@
                     than
                     the other factors.
                 </p>
-                <div>
-                    <h2>Mexican Top Adjectives</h2>
-                    <div class="row">
-                        <div class="column">
-                            <img id="topAdjImg" src="presentation/graphs/MexicanTopAdj.png">
-                        </div>
-                        <div class="column">
-                            <img id="topAdjImg" src="presentation/graphs/TopAdjMWCpng.png">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="column">
-                        <h2>Japanese Word Cloud</h2>
-                        <img id="topAdjImg" src="presentation/graphs/TopAdjJWC.png">
-                    </div>
-                    <div class="column">
-                        <h2>American Word Cloud</h2>
-                        <img id="topAdjImg" src="presentation/graphs/TopAdjAWC.png">
-
-                    </div>
-                </div>
                 <p>Not all graphs were included for brevity and results were fairly similar, but all graphs can be
                     found <a href="https://github.com/rlyn122/YelpAnalytics/tree/deploy/presentation/graphs">here.</a>
                 </p>
@@ -263,7 +254,8 @@
                 <h2>Analysis 3: TF-IDF Analysis</h2>
                 <p> TF-IDF analysis is a way of measuring the significance of each word by its TF (Term frequency) and
                     IDF (Inverse Document Frequency) score. This method of analysis adjusts for the fact that some words
-                    appear more frequent than others. </p>
+                    appear more frequent than others. We thought that since Top-Adjectives was not able to capture our,
+                    perhaps TF-IDF scores would be able to capture more significant words about racial stereotypes.</p>
 
                 <h2>TFIDF on All 4 Cuisines</h2>
                 <h2>1 Star Rating: </h2>
@@ -286,6 +278,16 @@
                     </div>
                 </div>
 
+                <p>
+                    Above we show the top 10 TF-IDF scores for all four cuisines with rating 1. As you can see, the data is not super interesting. 
+                    All the graphs share commonalities, in that the top words include, worst, last, terrible, horrible, and rude. Seemingly, for the most part, 
+                    the graphs just confirm the language used to talk negatively in general. 
+                </p>
+                <p>
+                    The most notable trend again, is that the top word for Chinese cuisines in TF-IDF scores was "Chinese" and the second highest word for Mexican cuisine was "Mexican". 
+                    Other than this, these results seem pretty inconclusive. Below we show the top 10 TF-IDF scores for the 5 star rating.
+                </p>
+
                 <div id="2 Star">
                     <h2>5 Star Rating: </h2>
                     <div class="row">
@@ -305,6 +307,15 @@
                         </div>
                     </div>
                 </div>
+                <p>In the 5 star-ratings for different cuisines, delicious was by far the most significant word. This shows the importnace of taste
+                    to reviews. For Mexican and Chinese cuisines, "Mexican" and "Chinese" were again very significant words. Service is also extremely important
+                    as "friendly" is a common top word for all restaraunts. 
+                    Another notable point is that "authentic" is important in the top 10 TF-IDF scores for only the Mexican cuisine. 
+                </p>
+                <p>
+                    Overall, the TFIDF graphs did not get the information
+                    about stereotypes that we were searching for. We are searching for ways to better run our TF-IDF analyses.
+                </p>
                 <p>Again, not all graphs were included for brevity because results were fairly similar, but all graphs
                     for TFIDF analysis
                     can be
@@ -320,10 +331,25 @@
             <div class="center2">
 
                 <h2>Conclusion</h2>
-                <p>Although our initial data did not show any promising pattern, we seem to be heading in the right
-                    direction. With further cleaning and optimisation of the groupings, we will be able to find useful
-                    data
-                    for our project.</p>
+                <p> In conclusion, our initial data showed some promising patterns
+                    as we were able to identify possible implicit biases in commonly used customer critiques (cleanliness) for Chinese and Japanese restaurants. 
+                    Additionally, we discovered the potential of ‘othering of businesses that sell products that are not American. 
+                     With further cleaning and optimisation of the groupings, we would be able to find more conclusive data for our project.
+                    
+                                        
+                    </p>
+                    <p>In the future, we are specifically interested in pursuing the top adjectives model but grouping texts by subject, specifically cleanliness.
+                        Since we got promising results from our topic model analyses that suggested Chinese and Japanese restaraunts were dirty, 
+                        we can try to explore this by <strong>quantifying top adjectives about cleanliness </strong> to better understand if this 
+                        bias truly exists. For example, we would like to see
+                        what are all the top adjectives in only reviews about service or cleanliness. This will require more complex preprocessing and data filtering.
+                        We recognize that this research is far from done, and plan to continue searchign for stereotypes!
+                        <BR>
+                            <BR>
+                        TBD :)
+                    </p>
+            
+            
             </div>
             <button id="button1" onclick="showSection('analysis3')">Previous</button>
             <button onclick="showSection('title')">Restart</button>
