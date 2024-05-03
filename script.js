@@ -9,9 +9,13 @@ function showSection(sectionId) {
     const targetSection = document.getElementById(sectionId);
     targetSection.classList.remove('hidden');
 
-    //update progress bar
+    // Scroll to the top of the page instantly
+    window.scrollTo({ top: 0, behavior: 'auto' });
+
+    // Update progress bar
     updateProgressBar(sectionId);
 }
+
 
 function updateProgressBar(sectionId) {
     const progressBar = document.getElementById('progress-bar');
